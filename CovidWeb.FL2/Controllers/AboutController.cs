@@ -8,7 +8,7 @@ namespace CovidWeb.Controllers
 {
     public class AboutController : Controller
     {
-        [Route("")]
+        [Route("")] 
         [Route("/Om-oss")]
 
         public IActionResult Index()
