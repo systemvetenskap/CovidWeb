@@ -59,6 +59,7 @@
         <header id="fh5co-header">
             <div class="container">
                 <nav class="fh5co-main-nav">
+                    @await Component.InvokeAsync("Menu")
                     <ul>
                         @*<li>@Html.ActionLink("Om oss", "Index", "about") </li>*@
                         <li class="fh5co-active"><a href="/start"><span>Home</span></a></li>
@@ -87,13 +88,8 @@
                 </div>
                 <div class="col-md-3 col-md-push-1">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+                    @await Component.InvokeAsync("Menu")
+
                 </div>
                 <div class="col-md-3 col-md-push-1">
                     <h3>Follow Us</h3>
