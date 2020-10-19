@@ -6,12 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CovidWeb.Controllers
 {
-    public class StartController : Controller
+    public class ServicesController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-
     }
 }

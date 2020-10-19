@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CovidWeb.FL2.Controllers
+namespace CovidWeb.Controllers
 {
     public class AboutController : Controller
     {
