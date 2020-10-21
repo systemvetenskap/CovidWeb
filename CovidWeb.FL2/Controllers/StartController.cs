@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CovidWeb.Data;
+using CovidWeb.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CovidWeb.Controllers
@@ -16,7 +17,6 @@ namespace CovidWeb.Controllers
         }
 
         [Route("")]
-
         public async Task<IActionResult> Index()
         {
            var model =  await covidRepository.GetCountries();
@@ -28,6 +28,9 @@ namespace CovidWeb.Controllers
         {
             //TODO: Fixa så att man kan skicka in både summary och country
             var summary = await covidRepository.GetSummary();
+            var model = new SummaryViewModel(summary);
+            
+
             return View(summary);
         }
 

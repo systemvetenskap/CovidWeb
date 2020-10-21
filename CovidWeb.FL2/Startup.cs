@@ -19,8 +19,8 @@ namespace CovidWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<ICovidRepository, CovidRepository>();
-            //services.AddScoped<ICovidRepository, CovidMockRepository>();
+            //services.AddScoped<ICovidRepository, CovidRepository>();
+            services.AddScoped<ICovidRepository, CovidMockRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
