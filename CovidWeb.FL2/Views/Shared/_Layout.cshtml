@@ -63,8 +63,8 @@
                         @*<li>@Html.ActionLink("Om oss", "Index", "about") </li>*@
                         <li class="fh5co-active"><a href="/start"><span>Home</span></a></li>
                         <li><a href="/services"><span>Services</span></a></li>
-                       <li >@Html.ActionLink("Om oss", "Index", "about") </li>
-                       @* <li class="fh5co-active"><a href="/about"><span>About</span></a></li>*@
+                        <li>@Html.ActionLink("Om oss", "Index", "about") </li>
+                        @* <li class="fh5co-active"><a href="/about"><span>About</span></a></li>*@
                         <li><a href="/contact"><span>Contact</span></a></li>
                     </ul>
                 </nav>
@@ -73,7 +73,7 @@
 
         @RenderBody();
 
-      
+
 
     </div> <!-- END fh5co-wrap -->
 
@@ -112,7 +112,7 @@
             </div>
         </div>
     </footer>
-
+    @RenderSection("Scripts", required:false)
     <!-- jQuery -->
     <script src="~js/jquery.min.js"></script>
     <!-- jQuery Easing -->

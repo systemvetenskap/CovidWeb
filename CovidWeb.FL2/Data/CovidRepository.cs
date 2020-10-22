@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using CovidWeb.Models.DTO;
+using CovidWeb.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
@@ -44,6 +45,11 @@ namespace CovidWeb.Data
                 var result = JsonConvert.DeserializeObject<SummaryDTO>(data);
                 return result;
             }
+        }
+
+        public Task<SummaryViewModel> GetSummaryViewModel(string country = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

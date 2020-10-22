@@ -1,11 +1,12 @@
-﻿<div class="fh5co-hero" style="background-image: url(images/hero_4.jpg);" data-stellar-background-ratio="0.5">
+﻿@model CovidWeb.Models.ViewModels.SummaryViewModel
+<div class="fh5co-hero" style="background-image: url(images/hero_4.jpg);" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                 <div class="fh5co-intro fh5co-table-cell">
-                    <h1 class="text-center">About us</h1>
-                    <p>Made with love by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></p>
+                    <h1 class="text-center">Status</h1>
+                    <p>Covid</p>
                 </div>
             </div>
         </div>
@@ -15,10 +16,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <h2>Our History</h2>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. </p>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                <h2>Teset</h2>
+                <p>@Html.DisplayNameFor(x => x.Countries)</p>
+                <p>@Html.DropDownListFor(x => Model.Countries, new SelectList(Model.Countries, "Value", "Text"), "Välj land")</p>
 
+                <br />
+                <p>@Html.DisplayNameFor(model => model.NewConfirmed)</p>
+                <p>@Html.DisplayFor(model => model.NewConfirmed)</p>
+
+                <p>@Html.DisplayNameFor(model => model.TotalConfirmed)</p>
+                <p>@Html.DisplayFor(model => model.TotalConfirmed)</p>
+
+                <p>@Html.DisplayNameFor(model => model.Date)</p>
+                <p>@Html.DisplayFor(model => model.Date)</p>
             </div>
             <div class="col-md-7">
                 <img src="images/hero_1.jpg" alt="Free HTML5 by FreeHTML5.co" class="img-responsive">

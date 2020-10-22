@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using CovidWeb.Data;
 using CovidWeb.Models.DTO;
+using CovidWeb.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 
@@ -18,6 +19,28 @@ namespace CovidWeb.Test
         {
             basePath = $"{webHostEnvironment.ContentRootPath}\\Test\\Mockdata\\";
         }
+        public async Task<SummaryViewModel> GetSummaryViewModel(string country=null)
+        {
+            // null coalescing
+            country = country ?? "Sweden";
+            
+            // hämta summary
+            var summary = GetTestData<SummaryDTO>("summary.json");
+            // hämta länder
+            var countries = GetTestData<IEnumerable<CountryDto>>("countries.json");
+            
+            // hämta info från ett specifikt land
+            SummaryDetailDto summaryDetail = summary.Countries
+                .Where(c => c.Country.Equals(country))
+                .FirstOrDefault();
+            await Task.Delay(0);
+            // skicka in dessa båda värden till summaryviewmodel
+            return new SummaryViewModel(countries, summaryDetail);
+
+
+
+        }
+
         public Task<IEnumerable<CountryDto>> GetCountries()
         {
             throw new NotImplementedException();
@@ -41,11 +64,11 @@ namespace CovidWeb.Test
            // return result;
         }
 
-            /// <summary>
-            /// Generisk klass
-            /// </summary>
-            /// <param name="testFile"></param>
-            private T GetTestData<T>(string testFile)
+        /// <summary>
+        /// Generisk klass
+        /// </summary>
+        /// <param name="testFile"></param>
+        private T GetTestData<T>(string testFile)
         {
             string path = $"{basePath}{testFile}";
             string data = File.ReadAllText(path);

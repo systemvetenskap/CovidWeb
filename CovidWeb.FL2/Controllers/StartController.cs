@@ -16,7 +16,6 @@ namespace CovidWeb.Controllers
             this.covidRepository = covidRepository;
         }
 
-        [Route("")]
         public async Task<IActionResult> Index()
         {
            var model =  await covidRepository.GetCountries();
@@ -28,7 +27,7 @@ namespace CovidWeb.Controllers
         {
             //TODO: Fixa så att man kan skicka in både summary och country
             var summary = await covidRepository.GetSummary();
-            var model = new SummaryViewModel(summary);
+           // var model = new SummaryViewModel(summary);
             
 
             return View(summary);
