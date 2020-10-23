@@ -1,3 +1,3 @@
 ﻿function onChange(val) {
-    //window.location="/about/index?selectedCountry=" +val
+    window.location="/about/search?selectedCountry=" +val
 }
