@@ -21,7 +21,7 @@ namespace CovidWeb.Controllers
         }
         // [Route("")]
 
-        [Route("/about")]
+        //[Route("/about")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -34,7 +34,6 @@ namespace CovidWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Index(SummaryViewModel model)
         {
             var viewModel = await repository.GetSummaryViewModel(model.SelectedCountry);

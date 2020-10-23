@@ -61,5 +61,10 @@ namespace CovidWeb.Models.ViewModels
                 .OrderBy(x => x.Name)
                 .ToList();
         }
+
+        public SummaryViewModel()
+        {
+
+        }
     }
 }
