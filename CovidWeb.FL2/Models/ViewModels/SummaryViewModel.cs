@@ -16,7 +16,7 @@ namespace CovidWeb.Models.ViewModels
         public int NewConfirmed { get; set; }
 
         [Display(Name = "Totala antalet bekräftade fall")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N0}")]
         public int TotalConfirmed { get; set; }
         public int TotalDeaths { get; set; }
         [DisplayFormat(DataFormatString = "{0:dddd dd MMMM}")]
@@ -47,10 +47,14 @@ namespace CovidWeb.Models.ViewModels
         public SummaryViewModel(IEnumerable<CountryDto> countries, SummaryDetailDto summaryDetail)
         {
             // ger alla värden till våra properties
-            NewConfirmed = summaryDetail.NewConfirmed;
-            TotalConfirmed = summaryDetail.TotalConfirmed;
-            TotalDeaths = summaryDetail.TotalDeaths;
-            Date = summaryDetail.Date;
+            if (summaryDetail != null)
+            {
+                NewConfirmed = summaryDetail.NewConfirmed;
+                TotalConfirmed = summaryDetail.TotalConfirmed;
+                TotalDeaths = summaryDetail.TotalDeaths;
+                Date = summaryDetail.Date;
+            }
+            
 
             // gör om countryDto till en lista av countries
            this.countries = countries

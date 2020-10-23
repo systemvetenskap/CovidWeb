@@ -21,7 +21,7 @@ namespace CovidWeb.Controllers
         }
         // [Route("")]
 
-        //[Route("/about")]
+        [Route("/about")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -31,13 +31,13 @@ namespace CovidWeb.Controllers
             var time = watch.ElapsedMilliseconds;
             return View(viewModel);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(SummaryViewModel model)
+        [HttpGet("About/Search")]
+        public async Task<IActionResult> Search(SummaryViewModel model)
         {
+            ModelState.Clear();
             var viewModel = await repository.GetSummaryViewModel(model.SelectedCountry);
-            return View(viewModel);
+            viewModel.SelectedCountry = model.SelectedCountry;
+            return View("index", viewModel);
         }
 
 

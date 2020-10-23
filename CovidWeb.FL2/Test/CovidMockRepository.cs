@@ -42,11 +42,13 @@ namespace CovidWeb.Test
 
         }
 
-        public Task<IEnumerable<CountryDto>> GetCountries()
+        public async Task<IEnumerable<CountryDto>> GetCountries()
         {
-            throw new NotImplementedException();
+            await Task.Delay(0);
+           return FileHandler.GetTestData<IEnumerable<CountryDto>>(basePath + "countries.json");
+
         }
-        
+
         public async Task<SummaryDTO> GetSummary()
         {
             string testFile = "summary.json";
