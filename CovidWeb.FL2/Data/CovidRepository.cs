@@ -36,14 +36,14 @@ namespace CovidWeb.Data
         public async Task<SummaryViewModel> GetSummaryViewModel(string country = null)
         {
             country = country ?? defaultCountry;
-            var tasks = new List<Task>();
+            var tasks = new List<Task>(); // en lista med olika trådar
 
-            var countries = apiClient.GetAsync<IEnumerable<CountryDto>>(baseUrl + "countries");
-            var summary =  apiClient.GetAsync<SummaryDTO>(baseUrl + "summary");
+            var countries = apiClient.GetAsync<IEnumerable<CountryDto>>(baseUrl + "countries"); // ett nytt uppdrag
+            var summary =  apiClient.GetAsync<SummaryDTO>(baseUrl + "summary"); // ännu ett uppdrag
 
-            tasks.Add(countries);
+            tasks.Add(countries); // koppla ihop uppdraget med trådarna
             tasks.Add(summary);
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(tasks); // kör alla trådar, parallellt
 
             SummaryDetailDto summaryDetail = summary.Result.Countries
                 .Where(c => c.Country.Equals(country))
