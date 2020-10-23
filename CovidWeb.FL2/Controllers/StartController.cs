@@ -18,8 +18,17 @@ namespace CovidWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
+            try
+            {
            var model =  await covidRepository.GetCountries();
            return View(model);
+
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("index", "error");
+            }
         }
 
 

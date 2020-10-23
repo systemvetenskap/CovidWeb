@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using CovidWeb.Data;
+using CovidWeb.Infrastructure;
 using CovidWeb.Models.DTO;
 using CovidWeb.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
@@ -58,6 +59,10 @@ namespace CovidWeb.Test
         {
             string testFile = "summary.json";
             var result = GetTestData<SummaryDTO>(testFile);
+            var result2 = FileHandler.GetTestData<SummaryDTO>(basePath  + testFile);
+
+            // flytta in den här tråkiga saken i vymodellen istället
+
             SummaryDetailDto summary = result.Countries
                 .Where(c => c.Country.Equals(country))
                 .FirstOrDefault();

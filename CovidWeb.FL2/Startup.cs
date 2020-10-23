@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CovidWeb.Data;
+using CovidWeb.Infrastructure;
 using CovidWeb.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -19,8 +21,9 @@ namespace CovidWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //services.AddScoped<ICovidRepository, CovidRepository>();
-            services.AddScoped<ICovidRepository, CovidMockRepository>();
+            services.AddScoped<ICovidRepository, CovidRepository>();
+            services.AddScoped<IApiClient, ApiClient>();
+            //services.AddScoped<ICovidRepository, CovidMockRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

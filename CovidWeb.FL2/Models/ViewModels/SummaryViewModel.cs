@@ -12,9 +12,14 @@ namespace CovidWeb.Models.ViewModels
     public class SummaryViewModel
     {
         [Display(Name = "Nya bekräftade fall")]
+        [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString = "{0:N0} st")]
         public int NewConfirmed { get; set; }
+
+        [Display(Name = "Totala antalet bekräftade fall")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         public int TotalConfirmed { get; set; }
         public int TotalDeaths { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dddd dd MMMM}")]
         public DateTime Date { get; set; }
 
         private List<Country> countries;
